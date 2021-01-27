@@ -2,7 +2,9 @@
 title: "A peek inside the 'Black Box' - interpreting neural networks"
 author: "Patrick Altmeyer"
 date: "`r format(Sys.Date(), '%B, %Y')`"
-output: pdf_document
+output: 
+  bookdown::pdf_document2: default
+  bookdown::html_document2: default
 bibliography: bib.bib
 ---
 
@@ -56,6 +58,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 -   The lack of interpretability has become a main barrier of deep learning in its wide-spread applications.
 
+-   Whenever support vector machines or neural networks give meaningful performance gains over more conventional regression models, a challenge of interpretability arises. In these situations, it is often questioned what characteristics of the input data are being most used by the black box. [@crawford2019variable]
+
 -   The regularizations of European Union were proposed in 2016 that individuals influenced by algorithms have the right to obtain explanation [@fan2020interpretability].
 
 -   DNNs have not been widely adopted in scientific settings, where variable selection tasks are often as important as prediction [@ish2019interpreting].
@@ -108,7 +112,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 -   A good example to justify the utility of a saliency map is how a model successfully predicts the "polar bear" instances. If the polar bear always appears in the picture coupled with snow or ice, the model may misuse the information of snow to make inference rather than the features pertaining to the polar bear. [@fan2020interpretability]
 
--   A naïve approach is to take advantage of the change of prediction when removing one feature to probe the importance of the corresponding feature [@fan2020interpretability]
+-   A naive approach is to take advantage of the change of prediction when removing one feature to probe the importance of the corresponding feature [@fan2020interpretability]
 
     -   For example, in a house loan decision system, race should not be a factor for decision-making. However solely cancelling the "race" factor is not sufficient because some remaining factors such as "zipcode" are highly related with "race".
 
@@ -150,7 +154,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 -   L. Chu et al. (2018) proposed to use piecewise linear functions as activations for the neural network (PLNN)
 
--   Similarly, Vaughan et al. (2018) designed the network structure to compatibly learn the function formulated as: 𝑓(𝑥) = 𝜇 + 𝛾 h (𝛽𝑇𝑥)+𝛾 h (𝛽𝑇𝑥)+⋯+𝛾 h (𝛽𝑇𝑥), which is more interpretable than general networks, because such a function has simpler partial derivatives that can simplify saliency analysis, statistical analysis and so on.
+-   Similarly, Vaughan et al. (2018) designed the network structure to compatibly learn the function formulated as which is more interpretable than general networks, because such a function has simpler partial derivatives that can simplify saliency analysis, statistical analysis and so on.
 
 ## Bayesian NNs and the RATE methodology
 
@@ -158,19 +162,22 @@ knitr::opts_chunk$set(echo = TRUE)
 
 -   A distribution is placed over the network parameters, and the resulting network is then termed a Bayesian Neural Network (BNN). [@goan2020bayesian]
 
+-   More importantly, it was shown that by specifying a prior over the network weights, Bayes Theorem can be used to obtain an appropriate posterior. [@goan2020bayesian]
+
+-   While standard artificial neural networks often assign high confidence even to incorrect predictions, Bayesian neural networks can more accurately evaluate how likely their predictions are to be correct.
+
 -   The MLP serves as the basis for NNs, with modern architectures such as convolutional networks having an equivalent MLP representation. [@goan2020bayesian]
+
+-   Exact computation remains analytically and computationally intractable for any BNN of interest [@goan2020bayesian]
 
 Simple MLP with single-layer
 
-$$
-\begin{equation} 
+\begin{equation}
 \begin{aligned}
-&& z_m(\mathbf{X})&= \sum_{i=1}^{k} a(x_iw_{ji}^{(1)})
- \\
+&& z_m(\mathbf{X})&= \sum_{i=1}^{k} a(x_iw_{ji}^{(1)}) \\
 \end{aligned}
 (\#eq:name)
 \end{equation}
-$$
 
 -   In the frequentist setting of NN learning, a MLE or MAP estimate is found through the minimisation of a non-convex cost function [@goan2020bayesian]
 
@@ -184,53 +191,131 @@ $$
 
 Joint distribution defined as
 
-$$
-\begin{equation} 
+\begin{equation}
 \begin{aligned}
 && p(\mathbf{w},\mathcal{D})&=p(\mathbf{w})p(\mathcal{D}|\mathbf{w}) \\
 \end{aligned}
 (\#eq:joint_dist)
 \end{equation}
-$$ where for the likelihood it is common to assume that samples from $\mathcal{D}$ are i.i.d. and hence we have
 
-$$
-\begin{equation} 
+where for the likelihood it is common to assume that samples from $\mathcal{D}$ are i.i.d. and hence we have
+
+\begin{equation}
 \begin{aligned}
 && p(\mathcal{D}|\mathbf{w})&= \prod_{i=1}^N \sim \mathcal{N} (\mathbf{f}(x_i),\sigma_i) \\
 \end{aligned}
 (\#eq:likeli)
 \end{equation}
-$$
 
 with $\mathbf{f}(x_i)$ the mean value specified by the output of the network. It is also common to assume a zero mean Gaussian with a small variance for our prior. Applying Bayes' theorem then yields
 
-$$
-\begin{equation} 
+\begin{equation}
 \begin{aligned}
 && \pi(\mathbf{w}|\mathcal{D})&= \frac{p(\mathbf{w})p(\mathcal{D}|\mathbf{w})}{ \int p(\mathbf{w})p(\mathcal{D}|\mathbf{w}) d \mathbf{w}} = \frac{p(\mathbf{w})p(\mathcal{D}|\mathbf{w})}{p(\mathcal{D})}\\
 \end{aligned}
 (\#eq:bayes)
 \end{equation}
-$$
 
 Predictions for the outcome variable will then be an expectation fo the posterior
 
-$$
-\begin{equation} 
+\begin{equation}
 \begin{aligned}
 && \mathbb{E}_{\pi} \left( \mathbf{f} \right)&= \int \mathbf{f}(\mathbf{w})\pi(\mathbf{w}|\mathcal{D}) d \mathbf{w} \\
 \end{aligned}
 (\#eq:predict)
 \end{equation}
-$$
 
 -   Prediction can then be viewed as an average of the function f weighted by the posterior. It also provides a natural setting for confidence intervals around the predictions.
 
+#### Estimating predictive moments
+
+##### Variational inference
+
+-   This type of non-convex optimisation can be viewed in a Bayesian context through the lens of Variational Inference [@goan2020bayesian]
+
+-   VI is based on the idea to assume a suitable family of posterior distributions and then minimize the KL divergence between the true posterior and the variational posterior.
+
+-   Usually depends on imposing strong restrictions on the posterior.
+
+-   Modern approaches use SGD to optimize the variational objective.
+
+##### Markov Cain Monte Carlo
+
+-   MCMC simply approximates the expectation of the posterior through repeated draws from the posterior distribution:
+
+\begin{equation}
+\begin{aligned}
+&& \mathbb{E}_{\pi} \left( \mathbf{f} \right)&= \int \mathbf{f}(\mathbf{w})\pi(\mathbf{w}|\mathcal{D}) d \mathbf{w} \approx {1\over{N}} \sum_{i=1}^{N}
+\mathbf{f}(\mathbf{w}) \\
+\end{aligned}
+(\#eq:mcmc)
+\end{equation}
+
+-   MCMC enables sampling from our posterior distribution, with the samples converging to when the product of the probability density and volume are greatest [@goan2020bayesian]
+-   MCMC provides convergence to the true posterior as the number of samples approaches infinity.
+
+#### Gaussian processes properties of BNNs
+
+-   A Gaussian Process (GP) prior over the network output arises when the number of hidden units approaches infinity, and a Gaussian prior is placed over parameters. [@goan2020bayesian]
+
+-   GPs provide many of the properties we wish to obtain, such as reliable uncertainty estimates, interpretability and robustness. [@goan2020bayesian]
+
 ### RATE
+
+#### From Bayes to Gaussian Process regression
+
+[@ish2019interpreting] motivate their methodology for interpreting neural networks through Gaussian Process regression. Consider the following Bayesian regression model with Gaussian priors:
+
+\begin{equation}
+\begin{aligned}
+&& f(\mathbf{X}|\mathbf{w})&=\phi(\mathbf{X})^T\mathbf{w} + \varepsilon, &&\varepsilon \sim \mathcal{N}(0,\mathbf{I}) \\
+&& \mathbf{w}& \sim \mathcal{N}(0,{1\over{\lambda}} \mathbf{I})\\
+\end{aligned}
+(\#eq:bayes)
+\end{equation}
+
+This naturally gives rise to a particular example of a Gaussian Process (GP). In particular, since $\mathbf{u}(\mathbf{X})=\Phi(\mathbf{X})^T\mathbf{w}$ is just a linear combination fo Gaussian random variables it follows a Gaussian process itself
+
+\begin{equation}
+\begin{aligned}
+&& \mathbf{u}(\mathbf{X})=\Phi(\mathbf{X})^T\mathbf{w}& \sim \mathcal{N}(\mathbf{0}, \mathbf{K}) \\
+\end{aligned}
+(\#eq:khbs)
+\end{equation}
+
+where $\mathbf{K}$ is the Kernel (or Gram) matrix and $K_{i,j}=k(\mathbf{X_i,\mathbf{X}_j})={1\over{\lambda}}\phi(\mathbf{X_i})^T\phi(\mathbf{X_m})$ is the kernel function [@bishop2006pattern]. That is, the prior distribution over $\mathbf{w}$ induces a probability distribution over random functions $\mathbf{u}(\mathbf{X})$. The GP can therefore alternatively be understood as a prior distribution over a an infinite-dimensional reproducible kernel Hilbert space (RKHS) [@crawford2019variable], which in a finite-dimensional setting becomes multivariate Gaussian.
+
+#### *Global* interpretability of features
+
+In a standard linear model regression coefficients characterize the projection of the outcome variable $\mathbf{y}$ onto the column space of the regressors $\mathbf{X}$, in particular with ordinary least square we define:
+
+\begin{equation}
+\begin{aligned}
+&& \beta&=(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{y} \\
+\end{aligned}
+(\#eq:ols)
+\end{equation}
+
+In other words, the pimary focus here is to learn the mapping from input to output. The key differentiating feature between this approach and the non-parametric model in \@ref(eq:bayes) is the fact that in case of the latter we are interested in learning not only the mapping from inputs to outputs, but also the representation ($\mathbf{u}(\mathbf{X})$) of the inputs. To be even more specific, treating the feature representation itself as random allows as in @ref(eq:bayes) allows us to learn non-linear relationship between the covariates $\mathbf{X}$, since they are implicitly captured by the RKHS [@crawford2019variable]. Neural networks share this architecture and hence it is worth dwelling on it a bit further: the fact that the learned model inherently incorporates variable interactions leads to the observation that an individual feature is rarely important on its own with respect to the mapping from $\mathbf{X}$ to $\mathbf{y}$ [@ish2019interpreting]. Hence, in order to gain an understanding of individual variable importance, one should aim to understand what role feature $\mathbf{X}_j$ plays *within* the learned model, thereby taking into account its interactions with other covariates. Formally, @crawford2019variable and define the *effect size analogue* as the equivalent of the familiar regression coefficient in the non-parametric setting
+
+\begin{equation}
+\begin{aligned}
+&& \tilde\beta&=\mathbf{X}^+\Phi^T\mathbf{w}=\mathbf{X}^+\mathbf{u} \\
+\end{aligned}
+(\#eq:effect-size)
+\end{equation}
+
+where $\mathbf{X}^+=\lim_{\alpha} (\mathbf{X}^T\mathbf{X}+\alpha \mathbf{I})^{-1}\mathbf{X}^T$ denotes the Moore-Penrose pseudo-inverse (see for example @goodfellow2016deep). Intuitively the effect size analogue can be thought of as the resulting coefficients from regressing the fitted values $\hat{\mathbf{u}}$ from the learned probabilistic model on the covariates $\mathbf{X}$. it can be interpreted in the same way as linear regression coefficients, in that $\tilde\beta_j$ describes the marginal change in $\mathbf{u}$ given a unit increase in $\mathbf{X}_j$ holding all else constant. Note here the subtle, but crucial difference between \@ref(eq:ols) -- a projection from the outcome variable onto the column space of $\mathbf{X}$ -- and \@ref(eq:effect-size) -- a projection from the learned model to $\mathbf{X}$. In other words, looking at $\tilde\beta$ can be thought of as shining a light directly into the *Block Box*. Unfortunately, as @crawford2019variable point out working with \@ref(eq:effect-size) is usually not straight-forward. Instead the authors propose a distributional centrality measure based on $\tilde\beta$ to extract feature importance, which we shall turn to in the following section.
+
+#### RATE
+
+-   There are many approaches to infer associations based on the magnitude of effect size estimates, but many of these techniques rely on arbitrary thresholding and fail to account for key covarying relationships that exist within the data. [@goan2020bayesian]
 
 -   Throughout, we assume access to some trained Bayesian model, with the ability to draw samples from its posterior predictive distribution. This reflects the post-hoc nature of our objective of finding important subsets of variables. [@ish2019interpreting]
 
--   To begin, we consider a standard linear regression model
+-   Here, RATE identifies variables which are not just marginally important, but also those whose data associations stem from a significant covarying relationship with other variables. [@crawford2019variable]
+
+-   RATE will enable scientists to consider embracing machine learning-type approaches by allowing them to open up the black box [@crawford2019variable].
 
 -   In the Bayesian nonparametric setting, we relax the additive assumption in the covariates and consider a learned nonlinear function f that has been evaluated on the n-observed samples.
 
@@ -238,7 +323,7 @@ $$
 
 -   Consider a sample from the predictive distribution of $\tilde\beta$ obtained by iteratively transforming draws from the posterior of f via the deterministic projection specified in Equation (3). **The RATE criterion summarizes how much any one variable contributes to the total information the model has learned.**
 
--   Effectively, this is done by taking the Kullback-Leibler divergence (KLD) between (i) the conditional posterior predictive distribution p(β−j \| βj = 0) with the effect of the j-th predictor being set to zero, and (ii) the marginal distribution p(β−j) with the effects of the j-th predictor being integrated out:
+-   Effectively, this is done by taking the Kullback-Leibler divergence (KLD) between (i) the conditional posterior predictive distribution $p(\beta_j|\beta_j = 0)$ with the effect of the j-th predictor being set to zero, and (ii) the marginal distribution $p(\beta_j)$ with the effects of the j-th predictor being integrated out:
 
     ![](www/RATE.png)
 

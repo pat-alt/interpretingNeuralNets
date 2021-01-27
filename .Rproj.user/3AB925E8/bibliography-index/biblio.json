@@ -3,6 +3,42 @@
         {
             "author": [
                 {
+                    "family": "Crawford",
+                    "given": "Lorin"
+                },
+                {
+                    "family": "Flaxman",
+                    "given": "Seth R"
+                },
+                {
+                    "family": "Runcie",
+                    "given": "Daniel E"
+                },
+                {
+                    "family": "West",
+                    "given": "Mike"
+                }
+            ],
+            "container-title": "The annals of applied statistics",
+            "id": "crawford2019variable",
+            "issue": "2",
+            "issued": {
+                "date-parts": [
+                    [
+                        2019
+                    ]
+                ]
+            },
+            "page": "958",
+            "publisher": "NIH Public Access",
+            "title": "Variable prioritization in nonlinear black box methods: A genetic association case study",
+            "title-short": "Variable prioritization in nonlinear black box methods",
+            "type": "article-journal",
+            "volume": "13"
+        },
+        {
+            "author": [
+                {
                     "family": "Parr",
                     "given": "Terence"
                 },
