@@ -2,10 +2,11 @@
     "tempName": "Untitled1",
     "source_window_id": "",
     "Source": "Source",
-    "cursorPosition": "179,14",
-    "scrollLine": "146",
+    "cursorPosition": "202,2",
+    "scrollLine": "196",
     "rmdVisualMode": "false",
     "rmdVisualWrapConfigured": "true",
     "docOutlineVisible": "1",
-    "rmdVisualModeLocation": "16301:7608"
+    "rmdVisualModeLocation": "13741:4088",
+    "ignored_words": "interpretability\n"
 }

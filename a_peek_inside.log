@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.3.31)  27 JAN 2021 12:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.3.31)  31 JAN 2021 08:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1007,89 +1007,76 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 103.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (/usr/local/texlive/2016/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-) (./a_peek_inside.toc
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 1.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 1.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 1.
-)
-\tf@toc=\write3
-\openout3 = `a_peek_inside.toc'.
+) <www/arrieta_explainability.png, id=17, 1397.22pt x 705.63625pt>
+File: www/arrieta_explainability.png Graphic file (type png)
+<use www/arrieta_explainability.png>
+Package pdftex.def Info: www/arrieta_explainability.png used on input line 118.
 
-LaTeX Font Info:    Try loading font information for TS1+lmr on input line 119.
+(pdftex.def)             Requested size: 376.40166pt x 190.09364pt.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 124.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 124.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 124.
+[1
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/lm/ts1lmr.fd
-File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [1
-
-{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] <ww
-w/explainability_research.png, id=42, 546.04pt x 437.635pt>
-File: www/explainability_research.png Graphic file (type png)
-<use www/explainability_research.png>
-Package pdftex.def Info: www/explainability_research.png used on input line 216
-.
-(pdftex.def)             Requested size: 444.75621pt x 356.45901pt.
-[3 <./www/explainability_research.png>] [4] [5]
+{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2 <./w
+ww/arrieta_explainability.png>]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 432.
+(amsmath)                 on input line 145.
 
-[6] [7] <www/RATE.png, id=118, 914.41624pt x 218.8175pt>
-File: www/RATE.png Graphic file (type png)
-<use www/RATE.png>
-Package pdftex.def Info: www/RATE.png used on input line 527.
-(pdftex.def)             Requested size: 444.7471pt x 106.42685pt.
-<www/bayesian_nn.png, id=119, 957.5775pt x 678.535pt>
-File: www/bayesian_nn.png Graphic file (type png)
-<use www/bayesian_nn.png>
-Package pdftex.def Info: www/bayesian_nn.png used on input line 529.
-(pdftex.def)             Requested size: 444.75754pt x 315.15314pt.
-[8 <./www/RATE.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 558.
-[9 <./www/bayesian_nn.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 558.
+[3]
+LaTeX Font Info:    Try loading font information for TS1+lmr on input line 217.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/lm/ts1lmr.fd
+File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+) [4] [5] [6]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 353.
+[7]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 353.
 (./a_peek_inside.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 558.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 558.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 353.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 353.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 558.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 353.
  ) 
 Here is how much of TeX's memory you used:
- 13670 strings out of 493014
- 196950 string characters out of 6133351
- 307612 words of memory out of 5000000
- 16816 multiletter control sequences out of 15000+600000
- 78165 words of font info for 115 fonts, out of 8000000 for 9000
+ 13635 strings out of 493014
+ 195863 string characters out of 6133351
+ 306921 words of memory out of 5000000
+ 16814 multiletter control sequences out of 15000+600000
+ 82361 words of font info for 111 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 35i,8n,38p,1444b,401s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/lo
-cal/texlive/2016/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/20
-16/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2016/texmf-dist/
-fonts/enc/dvips/lm/lm-mathex.enc}{/usr/local/texlive/2016/texmf-dist/fonts/enc/
-dvips/lm/lm-mathit.enc}{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/lm/l
-m-ts1.enc}</usr/local/texlive/2016/texmf-dist/fonts/type1/public/lm/lmbx10.pfb>
+ 35i,10n,38p,2263b,343s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/local
+/texlive/2016/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/local/texlive/2
+016/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2016/texmf-
+dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2016/texmf-dist/fonts/enc
+/dvips/lm/lm-ec.enc}{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/lm/lm-m
+athit.enc}</usr/local/texlive/2016/texmf-dist/fonts/type1/public/lm/lmbx10.pfb>
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/loca
 l/texlive/2016/texmf-dist/fonts/type1/public/lm/lmbx7.pfb></usr/local/texlive/2
-016/texmf-dist/fonts/type1/public/lm/lmbxi10.pfb></usr/local/texlive/2016/texmf
--dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2016/texmf-dist/font
-s/type1/public/lm/lmmi10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/pu
-blic/lm/lmmi7.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/lm/lmr
-10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/lm/lmr12.pfb></us
-r/local/texlive/2016/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/local/tex
-live/2016/texmf-dist/fonts/type1/public/lm/lmr7.pfb></usr/local/texlive/2016/te
-xmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/2016/texmf-dist/f
-onts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1
-/public/lm/lmsy7.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/ams
-fonts/symbols/msbm10.pfb>
-Output written on a_peek_inside.pdf (9 pages, 449913 bytes).
+016/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2016/texmf-
+dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2016/texmf-dist/fonts
+/type1/public/lm/lmmi7.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/publ
+ic/lm/lmr10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/lm/lmr12
+.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/
+local/texlive/2016/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texliv
+e/2016/texmf-dist/fonts/type1/public/lm/lmr7.pfb></usr/local/texlive/2016/texmf
+-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2016/texmf-dist/fonts/
+type1/public/lm/lmri10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/publ
+ic/lm/lmsy10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/lm/lmsy
+7.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/symbols/m
+sbm10.pfb>
+Output written on a_peek_inside.pdf (7 pages, 388127 bytes).
 PDF statistics:
- 229 PDF objects out of 1000 (max. 8388607)
- 195 compressed objects within 2 object streams
- 75 named destinations out of 1000 (max. 500000)
- 12336 words of extra memory for PDF output out of 14400 (max. 10000000)
+ 277 PDF objects out of 1000 (max. 8388607)
+ 247 compressed objects within 3 object streams
+ 57 named destinations out of 1000 (max. 500000)
+ 14438 words of extra memory for PDF output out of 17280 (max. 10000000)
 
